@@ -1,5 +1,5 @@
 import './App.css';
-import { useStore } from './core/store.ts';
+import { useStore } from '@/core/store.ts';
 
 function App() {
     const { count, increment, decrement } = useStore();
