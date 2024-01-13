@@ -12,7 +12,7 @@ export default defineConfig({
             '@domain': path.resolve(__dirname, './src/domain'),
             '@pages': path.resolve(__dirname, './src/adapters/primary/pages'),
             '@components': path.resolve(__dirname, './src/adapters/primary/components'),
-            '@gateway': path.resolve(__dirname, './src/adapters/secondary/gateway'),
+            '@gateways': path.resolve(__dirname, './src/adapters/secondary/gateways'),
         },
     },
 });

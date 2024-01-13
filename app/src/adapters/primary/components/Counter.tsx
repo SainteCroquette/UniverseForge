@@ -1,38 +1,21 @@
-import { useStore } from '@core/store.ts';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useStore } from '@core/features/counterStore.ts';
 import { useEffect } from 'react';
+import { getCounter, updateCounter } from '@core/queries/CounterQueries.ts';
 
 const Counter = () => {
     const { count, setCount } = useStore();
 
     const { data, error, isLoading } = useQuery({
         queryKey: ['counter'],
-        queryFn: async (toto) => {
-            console.log('toto', toto);
-            const response = await fetch(`http://localhost:3000/counter/1`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            return await response.json();
-        },
+        queryFn: getCounter,
     });
 
     const { isPending, isError, isSuccess, mutate } = useMutation({
-        mutationFn: async (count: number) => {
-            await fetch(`http://localhost:3000/counter/1`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ count }),
-            });
-            return count;
-        },
+        mutationFn: updateCounter,
         onSuccess: (data) => {
             setCount(data);
-        }
+        },
     });
 
     useEffect(() => {
@@ -51,11 +34,11 @@ const Counter = () => {
 
     const handleIncrement = async () => {
         mutate(count + 1);
-    }
+    };
 
     const handleDecrement = async () => {
         mutate(count - 1);
-    }
+    };
 
     return (
         <div>
