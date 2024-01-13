@@ -3,6 +3,8 @@ import { useStore } from '@core/features/counterStore.ts';
 import { useEffect } from 'react';
 import { getCounter, updateCounter } from '@core/queries/CounterQueries.ts';
 
+import './Counter.styles.scss';
+
 const Counter = () => {
     const { count, setCount } = useStore();
 
@@ -41,12 +43,12 @@ const Counter = () => {
     };
 
     return (
-        <div>
+        <div className={'counter'}>
             <p>Counter: {count}</p>
 
-            <button onClick={handleIncrement}>Increment</button>
+            <button className={'counter-button'} onClick={handleIncrement}>Increment</button>
 
-            <button onClick={handleDecrement}>Decrement</button>
+            <button className={'counter-button'} onClick={handleDecrement}>Decrement</button>
 
             <div>
                 {isPending && 'Saving...'}
