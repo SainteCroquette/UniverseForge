@@ -1,5 +1,7 @@
 import Counter from "@components/Counter.tsx";
 
+import './styles/main.scss';
+
 function App() {
 
     return (

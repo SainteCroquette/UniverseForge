@@ -1,0 +1,19 @@
+@use './colors';
+@use './themes/dark';
+@use './themes/light';
+
+$theme-colors: (
+        dark: dark.$theme,
+        light: light.$theme
+);
+
+@mixin inject() {
+  @each $theme, $colors in $theme-colors {
+    &[data-theme="#{$theme}-theme"] {
+      --theme: #{$theme};
+      @each $color, $value in $colors {
+        --#{$color}: #{$value};
+      }
+    }
+  }
+}

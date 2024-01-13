@@ -1,0 +1,6 @@
+@use './themes';
+
+html {
+  @include themes.inject();
+  color: red;
+}
