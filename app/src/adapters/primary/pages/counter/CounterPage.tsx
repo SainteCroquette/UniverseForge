@@ -3,7 +3,7 @@ import Counter from "@components/Counter.tsx";
 
 const CounterPage = (): JSX.Element => {
     return (
-        <Page>
+        <Page defaultSideMenuMode={'collapsed'}>
             <Counter />
         </Page>
     );

@@ -1,0 +1,27 @@
+.side-menu {
+    background-color: #ccc;
+    height: 100%;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &.collapsed {
+        width: 50px;
+        transition: width 0.5s;
+    }
+
+    &.expanded {
+        width: 200px;
+        transition: width 0.5s;
+    }
+
+    &.hidden {
+        display: none;
+    }
+
+  .side-menu-content {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+}
