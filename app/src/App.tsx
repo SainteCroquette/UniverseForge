@@ -1,12 +1,11 @@
-import Counter from "@components/Counter.tsx";
-
-import './styles/main.scss';
+import {NavLink} from "react-router-dom";
 
 function App() {
 
     return (
         <div className={''}>
-            <Counter/>
+            app
+            <NavLink to={'/counter'}>Counter</NavLink>
         </div>
     );
 }
