@@ -26,7 +26,7 @@
             "@core/*": ["./src/core/*"],
             "@domain/*": ["./src/domain/*"],
             "@components/*": ["./src/adapters/primary/components/*"],
-            "@views/*": ["./src/adapters/primary/views/*"],
+            "@pages/*": ["./src/adapters/primary/pages/*"],
             "@gateways/*": ["./src/adapters/secondary/gateways/*"],
             "@services/*": ["./src/services/*"],
         }

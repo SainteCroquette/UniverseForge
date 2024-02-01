@@ -1,4 +1,4 @@
-import {QueryFunctionContext} from "@tanstack/react-query";
+import {QueryClient, QueryFunctionContext} from "@tanstack/react-query";
 import Gateways from "@core/gateways/Gateways.ts";
 import gateways from "@core/gateways";
 
@@ -19,3 +19,11 @@ export function createMutationFunctionWrapper<R, P>(callback: MutationCallback<R
         return callback(arg, gateways);
     };
 }
+
+export const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: 1000,
+        }
+    }
+});

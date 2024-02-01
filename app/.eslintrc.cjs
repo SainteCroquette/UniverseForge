@@ -27,7 +27,7 @@ module.exports = {
                 map: [
                     ['@', './src'],
                     ['@components', './src/adapters/primary/components'],
-                    ['@views', './src/adapters/primary/views'],
+                    ['@pages', './src/adapters/primary/pages'],
                     ['@domain', './src/domain'],
                     ['@gateways', './src/adapters/secondary/gateways'],
                     ['@core', './src/core'],

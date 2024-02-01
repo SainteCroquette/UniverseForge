@@ -13,6 +13,8 @@ const Counter = () => {
         queryFn: getCounter,
     });
 
+    console.log('query status: ', data, isLoading, error);
+
     const { isPending, isError, isSuccess, mutate } = useMutation({
         mutationFn: updateCounter,
         onSuccess: (data) => {

@@ -10,7 +10,7 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
             '@core': path.resolve(__dirname, './src/core'),
             '@domain': path.resolve(__dirname, './src/domain'),
-            '@views': path.resolve(__dirname, './src/adapters/primary/views'),
+            '@pages': path.resolve(__dirname, './src/adapters/primary/pages'),
             '@components': path.resolve(__dirname, './src/adapters/primary/components'),
             '@gateways': path.resolve(__dirname, './src/adapters/secondary/gateways'),
             '@services': path.resolve(__dirname, './src/services')

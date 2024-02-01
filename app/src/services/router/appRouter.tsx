@@ -1,10 +1,14 @@
 import {createBrowserRouter} from "react-router-dom";
-import App from "@/App.tsx";
 
+import ErrorBoundary from "./errorBoundary.tsx";
+
+import routes from './routes';
 
 const appRouter = createBrowserRouter([
-    { path: '/', element: <App/> },
-    { path: '/counter', lazy: () => import("@views/counter/CounterView.tsx")},
+    {
+        children: routes,
+        errorElement: <ErrorBoundary/>,
+    },
 ]);
 
 export default appRouter;
