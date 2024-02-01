@@ -27,10 +27,11 @@ module.exports = {
                 map: [
                     ['@', './src'],
                     ['@components', './src/adapters/primary/components'],
-                    ['@pages', './src/adapters/primary/pages'],
+                    ['@views', './src/adapters/primary/views'],
                     ['@domain', './src/domain'],
                     ['@gateways', './src/adapters/secondary/gateways'],
                     ['@core', './src/core'],
+                    ['@services', './src/services']
                 ],
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
             },
