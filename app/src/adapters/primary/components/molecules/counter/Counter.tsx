@@ -1,7 +1,10 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { useStore } from '@core/features/counterStore.ts';
 import { useEffect } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+
+import { useStore } from '@core/features/counterStore.ts';
 import { getCounter, updateCounter } from '@core/queries/CounterQueries.ts';
+
+import Button from '@atoms/button/Button.tsx';
 
 import './Counter.styles.scss';
 
@@ -26,7 +29,7 @@ const Counter = () => {
         if (data) {
             setCount(data.count);
         }
-    }, [data]);
+    }, [data, setCount]);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -48,9 +51,9 @@ const Counter = () => {
         <div className={'counter'}>
             <p>Counter: {count}</p>
 
-            <button className={'counter-button'} onClick={handleIncrement}>Increment</button>
+            <Button className={'counter-button'} onClick={handleIncrement} label={'Increment'} />
 
-            <button className={'counter-button'} onClick={handleDecrement}>Decrement</button>
+            <Button className={'counter-button'} onClick={handleDecrement} label={'Decrement'} />
 
             <div>
                 {isPending && 'Saving...'}

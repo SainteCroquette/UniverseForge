@@ -1,4 +1,4 @@
-import Page from "@components/page/Page.tsx";
+import Page from "@templates/page/Page.tsx";
 
 import './ErrorPage.styles.scss';
 

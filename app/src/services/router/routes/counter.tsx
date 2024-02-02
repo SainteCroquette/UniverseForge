@@ -4,7 +4,7 @@ import {getCounter} from "@core/queries/CounterQueries.ts";
 
 const counterRoute: RouteObject = {
     path: '/counter',
-    lazy: () => import('@pages/counter/CounterPage.view.ts'),
+    lazy: () => import('@pages/counter/CounterPage.lazy.ts'),
     loader: () => {
         queryClient.prefetchQuery({
             queryKey: ['counter'],

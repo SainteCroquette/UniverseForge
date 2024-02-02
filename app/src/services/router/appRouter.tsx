@@ -1,13 +1,14 @@
 import {createBrowserRouter} from "react-router-dom";
 
+import AppLayout from "@templates/appLayout/AppLayout.tsx";
+
 import ErrorBoundary from "./errorBoundary.tsx";
 
 import routes from './routes';
-import Layout from "@components/Layout.tsx";
 
 const appRouter = createBrowserRouter([
     {
-        element: <Layout/>,
+        element: <AppLayout/>,
         children: routes,
         errorElement: <ErrorBoundary/>,
     },

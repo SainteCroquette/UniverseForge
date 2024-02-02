@@ -1,5 +1,5 @@
-import Page from "@components/page/Page.tsx";
-import Counter from "@components/Counter.tsx";
+import Page from "@templates/page/Page.tsx";
+import Counter from "@molecules/counter/Counter.tsx";
 
 const CounterPage = (): JSX.Element => {
     return (

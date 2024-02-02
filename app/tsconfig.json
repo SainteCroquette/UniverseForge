@@ -25,10 +25,13 @@
             "@/*": ["./src/*"],
             "@core/*": ["./src/core/*"],
             "@domain/*": ["./src/domain/*"],
-            "@components/*": ["./src/adapters/primary/components/*"],
+            "@atoms/*": ["./src/adapters/primary/components/atoms/*"],
+            "@molecules/*": ["./src/adapters/primary/components/molecules/*"],
+            "@organisms/*": ["./src/adapters/primary/components/organisms/*"],
+            "@templates/*": ["./src/adapters/primary/components/templates/*"],
             "@pages/*": ["./src/adapters/primary/pages/*"],
             "@gateways/*": ["./src/adapters/secondary/gateways/*"],
-            "@services/*": ["./src/services/*"],
+            "@services/*": ["./src/services/*"]
         }
     },
     "include": ["src"],

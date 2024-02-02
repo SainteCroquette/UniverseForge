@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import SideMenu from "@components/sidemenu/SideMenu.tsx";
+import SideMenu from "@organisms/sidemenu/SideMenu.tsx";
 
-import './Layout.styles.scss';
+import './AppLayout.styles.scss';
 
-const Layout = (): JSX.Element => {
+const AppLayout = (): JSX.Element => {
     return (
         <div className={'app-layout'}>
             <SideMenu />
@@ -14,4 +14,4 @@ const Layout = (): JSX.Element => {
     );
 };
 
-export default Layout;
+export default AppLayout;

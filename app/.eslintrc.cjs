@@ -26,7 +26,10 @@ module.exports = {
             alias: {
                 map: [
                     ['@', './src'],
-                    ['@components', './src/adapters/primary/components'],
+                    ['@atoms', './src/adapters/primary/components/atoms'],
+                    ['@molecules', './src/adapters/primary/components/molecules'],
+                    ['@organisms', './src/adapters/primary/components/organisms'],
+                    ['@templates', './src/adapters/primary/components/templates'],
                     ['@pages', './src/adapters/primary/pages'],
                     ['@domain', './src/domain'],
                     ['@gateways', './src/adapters/secondary/gateways'],

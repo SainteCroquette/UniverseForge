@@ -13,6 +13,7 @@ const SideMenu = (): JSX.Element => {
                 <button onClick={toggle}>toggle</button>
                 <NavLink to={'/'} >Home</NavLink>
                 <NavLink to={'/counter'}>Counter</NavLink>
+                <NavLink to={'/profile'}>Profile</NavLink>
             </div>
         </div>
     );
