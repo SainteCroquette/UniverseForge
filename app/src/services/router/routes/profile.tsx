@@ -1,21 +1,20 @@
-import {redirect, type RouteObject} from 'react-router-dom';
-import userHasCorrectRights from "@services/router/guard.ts";
+import { type RouteObject } from 'react-router-dom';
+import userHasCorrectRights, { Guard } from '@services/router/guard.ts';
+import ForbiddenError from '@domain/error/ForbiddenError.ts';
+import type { LazyRouteFunction } from '@remix-run/router';
 
 const profileRoute: RouteObject = {
     path: '/profile',
-    loader: () => {
-        if (!userHasCorrectRights({roles: ['user']})) {
-            console.log('redirecting to /');
-            return redirect('/forbidden');
-        }
-        return null;
-    },
-    lazy: () => {
-        if (!userHasCorrectRights({roles: ['user']})) {
-            return import('@pages/forbidden/ForbiddenPage.lazy.ts');
-        }
-        return import('@pages/profile/ProfilePage.lazy.ts');
-    },
+    lazy: importGuard({ roles: ['user'] }, () => import('@pages/profile/ProfilePage.lazy.ts')),
 };
 
+//import function with role & permissions guard
+function importGuard(guard: Guard, target: LazyRouteFunction<RouteObject>) {
+    return () => {
+        if (guard && !userHasCorrectRights(guard)) {
+            throw new ForbiddenError();
+        }
+        return target();
+    };
+}
 export default profileRoute;

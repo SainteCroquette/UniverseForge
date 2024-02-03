@@ -1,13 +1,21 @@
-import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import {isRouteErrorResponse, Navigate, useRouteError} from 'react-router-dom';
 import ErrorPage from "@/adapters/primary/pages/error/ErrorPage.tsx";
+import ForbiddenError from "@domain/error/ForbiddenError.ts";
 
 const ErrorBoundary = () => {
     const error = useRouteError();
 
-    // @ts-ignore unknown error type
+    if (isForbiddenError(error)) {
+        return <Navigate to={'/forbidden'} />;
+    }
+
     const text = isRouteErrorResponse(error) ? `${error.status} ${error.statusText}` : `${error.message || error}`;
 
     return <ErrorPage error={text} />;
 };
+
+function isForbiddenError(error: unknown) {
+    return error instanceof ForbiddenError;
+}
 
 export default ErrorBoundary;

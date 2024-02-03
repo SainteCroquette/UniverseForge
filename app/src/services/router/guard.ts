@@ -2,7 +2,7 @@ import Role from '@domain/Role.ts';
 import Permission from '@domain/Permission.ts';
 import { useUserStore } from '@core/features/userStore.ts';
 
-interface Guard {
+export interface Guard {
     roles?: Role[];
     permissions?: Permission[];
 }

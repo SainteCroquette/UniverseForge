@@ -9,8 +9,10 @@ import routes from './routes';
 const appRouter = createBrowserRouter([
     {
         element: <AppLayout/>,
-        children: routes,
-        errorElement: <ErrorBoundary/>,
+        children: [{
+            children: routes,
+            errorElement: <ErrorBoundary/>,
+        }],
     },
 ]);
 
