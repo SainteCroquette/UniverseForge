@@ -6,10 +6,16 @@ interface Guard {
     roles?: Role[];
     permissions?: Permission[];
 }
-function checkPermissions({ roles, permissions }: Guard): boolean {
-    const { userRole, userPermissions } = useUserStore().getState();
+function userHasCorrectRights({ roles, permissions }: Guard): boolean {
+    const { userRole, userPermissions } = useUserStore.getState();
 
-    return !hasRole(userRole, roles) || !hasPermission(userPermissions, permissions);
+    console.log('userRole', userRole);
+    console.log('userPermissions', userPermissions);
+    const roleOk = hasRole(userRole, roles);
+    const permsOk = hasPermission(userPermissions, permissions);
+    console.log('roleOk', roleOk);
+    console.log('permsOk', permsOk);
+    return roleOk && permsOk;
 }
 
 function hasRole(userRole: Role, requiredRoles?: Role[]): boolean {
@@ -26,4 +32,4 @@ function hasPermission(userPermissions: Permission[], requiredPermissions?: Perm
     return requiredPermissions.some((permission) => userPermissions.includes(permission));
 }
 
-export default checkPermissions;
+export default userHasCorrectRights;
