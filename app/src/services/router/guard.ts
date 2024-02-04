@@ -1,9 +1,10 @@
-import { useUserStore } from '@core/features/userStore.ts';
-import { type AuthorizationGuard } from '@domain/AuthorizationDetails.ts';
-import type { LazyRouteFunction } from '@remix-run/router';
 import type { RouteObject } from 'react-router-dom';
+import type { LazyRouteFunction } from '@remix-run/router';
+import type { LoaderFunction } from '@remix-run/router/utils.ts';
+
+import { useUserStore } from '@core/features/userStore.ts';
+import type { AuthorizationGuard } from '@domain/AuthorizationDetails.ts';
 import ForbiddenError from '@domain/error/ForbiddenError.ts';
-import { LoaderFunction } from '@remix-run/router/utils.ts';
 
 function doUserSatisfyGuard(guard: AuthorizationGuard): boolean {
     const { authorization } = useUserStore.getState();
