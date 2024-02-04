@@ -9,6 +9,7 @@ const ErrorBoundary = () => {
         return <Navigate to={'/forbidden'} />;
     }
 
+    // @ts-expect-error unknown error type
     const text = isRouteErrorResponse(error) ? `${error.status} ${error.statusText}` : `${error.message || error}`;
 
     return <ErrorPage error={text} />;

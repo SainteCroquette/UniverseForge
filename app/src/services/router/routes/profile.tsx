@@ -11,7 +11,7 @@ const profileRoute: RouteObject = {
 //import function with role & permissions guard
 function importGuard(guard: Guard, target: LazyRouteFunction<RouteObject>) {
     return () => {
-        if (guard && !userHasCorrectRights(guard)) {
+        if (!userHasCorrectRights(guard)) {
             throw new ForbiddenError();
         }
         return target();
