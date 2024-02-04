@@ -1,10 +1,8 @@
-import create from 'zustand';
-import Role from '@domain/Role.ts';
-import Permission from "@domain/Permission.ts";
+import { create } from 'zustand';
+import AuthorizationDetails from '@domain/AuthorizationDetails.ts';
 
 interface UserState {
-    userRole: Role;
-    userPermissions: Permission[];
+    authorization: AuthorizationDetails;
     login: () => void;
     logout: () => void;
 }
@@ -12,6 +10,7 @@ interface UserState {
 export const useUserStore = create<UserState>((set) => ({
     userRole: 'guest',
     userPermissions: [],
-    login: () => set({ userRole: 'user' }),
-    logout: () => set({ userRole: 'guest' }),
+    authorization: new AuthorizationDetails(['guest'], []),
+    login: () => set({ authorization: new AuthorizationDetails(['user'], []) }),
+    logout: () => set({ authorization: new AuthorizationDetails(['guest'], []) }),
 }));
