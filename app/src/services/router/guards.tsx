@@ -5,6 +5,7 @@ import type { LoaderFunction } from '@remix-run/router/utils.ts';
 import { useUserStore } from '@core/features/userStore.ts';
 import type { AuthorizationGuard } from '@domain/AuthorizationDetails.ts';
 import ForbiddenError from '@domain/error/ForbiddenError.ts';
+import RouteGuard from '@services/router/routes/RouteGuard.tsx';
 
 function doUserSatisfyGuard(guard: AuthorizationGuard): boolean {
     const { authorization } = useUserStore.getState();
@@ -30,5 +31,20 @@ function loaderGuard(guard: AuthorizationGuard, target: LoaderFunction): LoaderF
     };
 }
 
+function createGuard(guard: AuthorizationGuard, route: RouteObject): RouteObject {
+    const loader = route.loader ? loaderGuard(guard, route.loader) : undefined;
+    const lazy = route.lazy ? lazyGuard(guard, route.lazy) : undefined;
 
-export { doUserSatisfyGuard, lazyGuard, loaderGuard };
+    return {
+        element: <RouteGuard guard={guard} />,
+        children: [
+            {
+                ...route,
+                loader,
+                lazy,
+            },
+        ],
+    };
+}
+
+export { doUserSatisfyGuard, lazyGuard, loaderGuard, createGuard };
