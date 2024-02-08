@@ -1,5 +1,6 @@
-import { AuthorizationGuard } from '@domain/AuthorizationDetails.ts';
 import { Navigate, Outlet } from 'react-router-dom';
+
+import { AuthorizationGuard } from '@domain/AuthorizationDetails.ts';
 import { useUserStore } from '@core/features/userStore.ts';
 
 interface RouteGuardProps {

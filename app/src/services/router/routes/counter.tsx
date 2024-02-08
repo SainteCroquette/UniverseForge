@@ -1,8 +1,8 @@
 import { queryClient } from '@core/queries';
 import { getCounter } from '@core/queries/CounterQueries.ts';
-import { createGuard } from '@services/router/guards.tsx';
+import { attachGuardToRoute } from '@services/router/guards.tsx';
 
-const counterRoute = createGuard(
+const counterRoute = attachGuardToRoute(
     { all: { privileges: 'counterPrivilege' } },
     {
         path: '/counter',
