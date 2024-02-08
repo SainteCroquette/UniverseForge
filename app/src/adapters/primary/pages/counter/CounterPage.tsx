@@ -1,10 +1,10 @@
 import Page from "@templates/page/Page.tsx";
-import Counter from "@molecules/counter/Counter.tsx";
+import CountersDemo from "@organisms/countersDemo/CountersDemo.tsx";
 
 const CounterPage = (): JSX.Element => {
     return (
         <Page defaultSideMenuMode={'collapsed'}>
-            <Counter />
+            <CountersDemo />
         </Page>
     );
 };

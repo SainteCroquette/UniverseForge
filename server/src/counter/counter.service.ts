@@ -32,6 +32,7 @@ export class CounterService {
 
   async update(id: number, updateCounterDto: UpdateCounterDto) {
     await this.counterRepository.update({ id: id }, updateCounterDto);
+    return await this.counterRepository.findOne({ where: { id: id } });
   }
 
   remove(id: number) {

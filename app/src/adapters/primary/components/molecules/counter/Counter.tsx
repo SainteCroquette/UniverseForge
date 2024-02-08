@@ -1,35 +1,18 @@
-import { useEffect } from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
-
-import { useStore } from '@core/features/counterStore.ts';
-import { getCounter, updateCounter } from '@core/queries/CounterQueries.ts';
-
 import Button from '@atoms/button/Button.tsx';
 
 import './Counter.styles.scss';
 
-const Counter = () => {
-    const { count, setCount } = useStore();
+interface CounterProps {
+    count: number;
+    isLoading: boolean;
+    updatePending?: boolean;
+    updateError?: boolean;
+    updateSuccess?: boolean;
+    error: Error | null;
+    setCount: (count: number) => void;
+}
 
-    const { data, error, isLoading } = useQuery({
-        queryKey: ['counter'],
-        queryFn: getCounter,
-    });
-
-    console.log('query status: ', data, isLoading, error);
-
-    const { isPending, isError, isSuccess, mutate } = useMutation({
-        mutationFn: updateCounter,
-        onSuccess: (data) => {
-            setCount(data);
-        },
-    });
-
-    useEffect(() => {
-        if (data) {
-            setCount(data.count);
-        }
-    }, [data, setCount]);
+const Counter = ({count, isLoading, updatePending, error, updateError, updateSuccess, setCount}: CounterProps) => {
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -40,11 +23,11 @@ const Counter = () => {
     }
 
     const handleIncrement = async () => {
-        mutate(count + 1);
+        setCount(count + 1);
     };
 
     const handleDecrement = async () => {
-        mutate(count - 1);
+        setCount(count - 1);
     };
 
     return (
@@ -56,9 +39,9 @@ const Counter = () => {
             <Button className={'counter-button'} onClick={handleDecrement} label={'Decrement'} />
 
             <div>
-                {isPending && 'Saving...'}
-                {isError && 'Error...'}
-                {isSuccess && 'Saved'}
+                {updatePending && 'Saving...'}
+                {updateError && 'Error...'}
+                {updateSuccess && 'Saved'}
             </div>
         </div>
     );
