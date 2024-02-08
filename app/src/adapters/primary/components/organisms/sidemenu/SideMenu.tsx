@@ -1,9 +1,11 @@
+import { NavLink } from 'react-router-dom';
+
 import { useSideMenuStore } from '@core/features/sideMenuStore.ts';
+import { useUserStore } from '@core/features/userStore.ts';
+
+import { Typography, Button } from '@atoms/index.ts';
 
 import './SideMenu.styles.scss';
-import { NavLink } from 'react-router-dom';
-import { useUserStore } from '@core/features/userStore.ts';
-import Button from '@atoms/button/Button.tsx';
 
 const SideMenu = (): JSX.Element => {
     const { currentMode, toggle } = useSideMenuStore();
@@ -12,21 +14,23 @@ const SideMenu = (): JSX.Element => {
     return (
         <div className={`side-menu ${currentMode}`}>
             <div className={'side-menu-content'}>
-                side menu {authorization.roles}
-                <button onClick={toggle}>toggle</button>
-                <NavLink to={'/'}>Home</NavLink>
-                <NavLink to={'/counter'}>Counter</NavLink>
-                <NavLink to={'/profile'}>Profile</NavLink>
-                {
-                    authorization.satisfy({ all: { roles: ['guest'] } }) && <Button label={'Login'} onClick={login}/>
-                }
-                {
-                    !authorization.satisfy({ all: { roles: ['guest'] } }) && <Button label={'Logout'} onClick={logout}/>
-                }
+                <Typography text={`side menu ${authorization.roles}`} />
+
+                <Button onClick={toggle} label={'toggle'} />
+                <NavLink to={'/'}>
+                    <Typography className={'side-menu-item'} text={'Home'} />
+                </NavLink>
+                <NavLink to={'/counter'}>
+                    <Typography className={'side-menu-item'} text={'Counter'} />
+                </NavLink>
+                <NavLink to={'/profile'}>
+                    <Typography className={'side-menu-item'} text={'Profile'} />
+                </NavLink>
+                {authorization.satisfy({ all: { roles: ['guest'] } }) && <Button label={'Login'} onClick={login} />}
+                {!authorization.satisfy({ all: { roles: ['guest'] } }) && <Button label={'Logout'} onClick={logout} />}
             </div>
         </div>
-    )
-        ;
+    );
 };
 
 export default SideMenu;

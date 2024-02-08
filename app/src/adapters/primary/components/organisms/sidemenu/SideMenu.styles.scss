@@ -1,5 +1,5 @@
 .side-menu {
-    background-color: #ccc;
+    background-color: #3e3e3e;
     height: 100%;
     width: 200px;
     white-space: nowrap;
@@ -19,9 +19,19 @@
         display: none;
     }
 
-  .side-menu-content {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-  }
+    .side-menu-content {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+
+        .side-menu-item {
+          text-align: left;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #098660;
+            transition: background-color 0.3s;
+          }
+        }
+    }
 }

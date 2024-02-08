@@ -46,7 +46,7 @@ const Counter = ({ count, isLoading, updatePending, error, updateError, updateSu
             <section className={'counter-buttons'}>
                 <Button onClick={handleIncrement} label={'Increment'} />
 
-                <Button className={'counter-button'} onClick={handleDecrement} label={'Decrement'} />
+                <Button onClick={handleDecrement} label={'Decrement'} />
             </section>
 
             <div>
