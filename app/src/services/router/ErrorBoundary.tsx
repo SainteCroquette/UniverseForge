@@ -1,6 +1,6 @@
-import {isRouteErrorResponse, Navigate, useRouteError} from 'react-router-dom';
-import ErrorPage from "@/adapters/primary/pages/error/ErrorPage.tsx";
-import ForbiddenError from "@domain/error/ForbiddenError.ts";
+import { isRouteErrorResponse, Navigate, useRouteError } from 'react-router-dom';
+import ErrorPage from '@pages/error/ErrorPage.tsx';
+import ForbiddenError from '@domain/error/ForbiddenError.ts';
 
 const ErrorBoundary = () => {
     const error = useRouteError();

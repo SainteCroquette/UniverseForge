@@ -1,10 +1,11 @@
-import Page from "@templates/page/Page.tsx";
+import Page from '@templates/page/Page.tsx';
+import { Typography } from '@atoms/index.ts';
 
 const ForbiddenPage = (): JSX.Element => {
     return (
         <Page>
-            <h1>Forbidden</h1>
-            <p>Sorry, you are not allowed to access this page.</p>
+            <Typography variant={'title'} size={'large'} text={'Forbidden'} />
+            <Typography text={'Sorry, you are not allowed to access this page.'} />
         </Page>
     );
 };

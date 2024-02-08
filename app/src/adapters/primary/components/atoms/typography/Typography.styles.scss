@@ -5,4 +5,37 @@
 
     color: var(--color-text-primary);
     text-align: center;
+
+    &.large {
+        @include fonts.font-size(20px);
+    }
+    &.medium {
+        @include fonts.font-size(16px);
+    }
+    &.small {
+        @include fonts.font-size(14px);
+    }
+
+    &.title {
+        &.large {
+            @include fonts.font-size(44px);
+        }
+        &.medium {
+            @include fonts.font-size(36px);
+        }
+        &.small {
+            @include fonts.font-size(28px);
+        }
+    }
+    &.subtitle {
+        &.large {
+            @include fonts.font-size(24px);
+        }
+        &.medium {
+            @include fonts.font-size(20px);
+        }
+        &.small {
+            @include fonts.font-size(18px);
+        }
+    }
 }
