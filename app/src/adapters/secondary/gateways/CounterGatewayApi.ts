@@ -1,25 +1,21 @@
-import CounterGateway from "@core/gateways/CounterGateway.ts";
+import CounterGateway from '@core/gateways/CounterGateway.ts';
 
-export default class CounterGatewayApi implements CounterGateway {
-    async getCounter(id: number) {
-        const response = await fetch(`http://localhost:3000/counter/${id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        return await response.json();
+import ApiService from '@services/api/ApiService.ts';
+
+import { CounterData } from '@domain/Counter.ts';
+
+import ApiGateway from "./ApiGateway.ts";
+
+export default class CounterGatewayApi extends ApiGateway implements CounterGateway{
+    constructor(api: ApiService) {
+        super(api);
     }
 
-    async setCounter(id: number, count: number) {
-        const response = await fetch(`http://localhost:3000/counter/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ count }),
-        });
+    async getCounter(id: number): Promise<CounterData> {
+        return this.api.get<CounterData>(`http://localhost:3000/counter/${id}`);
+    }
 
-        return await response.json();
+    async setCounter(id: number, count: number): Promise<CounterData> {
+        return this.api.patch<CounterData>(`http://localhost:3000/counter/${id}`, { count });
     }
 }
