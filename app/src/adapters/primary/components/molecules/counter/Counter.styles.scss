@@ -1,9 +1,8 @@
 .counter {
   color: #ddd;
-  text-align: center;
 
-  .counter-button {
-    color: #ccc;
-    background-color: #1a1a1a;
+  .counter-buttons {
+    display: flex;
+    gap: 8px;
   }
 }

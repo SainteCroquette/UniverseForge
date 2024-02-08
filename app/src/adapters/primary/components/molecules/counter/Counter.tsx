@@ -1,7 +1,8 @@
 import Button from '@atoms/button/Button.tsx';
 
 import './Counter.styles.scss';
-import Card from "@atoms/card/Card.tsx";
+import Card from '@atoms/card/Card.tsx';
+import Typography from '@atoms/typography/Typography.tsx';
 
 interface CounterProps {
     count: number;
@@ -13,14 +14,21 @@ interface CounterProps {
     setCount: (count: number) => void;
 }
 
-const Counter = ({count, isLoading, updatePending, error, updateError, updateSuccess, setCount}: CounterProps) => {
-
+const Counter = ({ count, isLoading, updatePending, error, updateError, updateSuccess, setCount }: CounterProps) => {
     if (isLoading) {
-        return <div>Loading...</div>;
+        return (
+            <Card>
+                <Typography text={'Loading...'} />
+            </Card>
+        );
     }
 
     if (error) {
-        return <div>Error</div>;
+        return (
+            <Card>
+                <Typography text={'Error'} />
+            </Card>
+        );
     }
 
     const handleIncrement = async () => {
@@ -33,16 +41,18 @@ const Counter = ({count, isLoading, updatePending, error, updateError, updateSuc
 
     return (
         <Card className={'counter'}>
-            <p>Counter: {count}</p>
+            <Typography text={`Count: ${count}`} />
 
-            <Button className={'counter-button'} onClick={handleIncrement} label={'Increment'} />
+            <section className={'counter-buttons'}>
+                <Button onClick={handleIncrement} label={'Increment'} />
 
-            <Button className={'counter-button'} onClick={handleDecrement} label={'Decrement'} />
+                <Button className={'counter-button'} onClick={handleDecrement} label={'Decrement'} />
+            </section>
 
             <div>
-                {updatePending && 'Saving...'}
-                {updateError && 'Error...'}
-                {updateSuccess && 'Saved'}
+                {updatePending && <Typography text={'Saving...'} />}
+                {updateError && <Typography text={'Error...'} />}
+                {updateSuccess && <Typography text={'Saved'} />}
             </div>
         </Card>
     );

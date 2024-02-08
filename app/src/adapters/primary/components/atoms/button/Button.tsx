@@ -1,3 +1,7 @@
+import Typography from '@atoms/typography/Typography.tsx';
+
+import './Button.styles.scss';
+
 interface ButtonProps {
     label: string;
     onClick?: () => void;
@@ -9,7 +13,7 @@ interface ButtonProps {
 const Button = ({ label, onClick, disabled, className, type = 'button' }: ButtonProps): JSX.Element => {
     return (
         <button className={`button ${className ?? ''}`} type={type} onClick={onClick} disabled={disabled}>
-            {label}
+            <Typography text={label} />
         </button>
     );
 };

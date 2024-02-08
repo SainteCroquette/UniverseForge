@@ -4,6 +4,9 @@ import { getCounter, updateCounter } from '@core/queries/CounterQueries.ts';
 import { useStore } from '@core/features/counterStore.ts';
 
 import Counter from '@molecules/counter/Counter.tsx';
+import Typography from "@atoms/typography/Typography.tsx";
+
+import './CounterDemo.styles.scss';
 
 const CountersDemo = (): JSX.Element => {
     const queryClient = useQueryClient();
@@ -26,7 +29,7 @@ const CountersDemo = (): JSX.Element => {
     return (
         <div className={'counters-demo'}>
             <article className={'counter-article'}>
-                <div className={'counter-title'}>Server state counter</div>
+                <Typography className={'demo-label'} text={'Server state counter'} />
                 <Counter
                     count={data?.count ?? 0}
                     isLoading={isLoading}
@@ -38,7 +41,7 @@ const CountersDemo = (): JSX.Element => {
                 />
             </article>
             <article className={'counter-article'}>
-                <div className={'counter-title'}>App state counter</div>
+                <Typography className={'demo-label'} text={'App state counter'} />
                 <Counter count={count} isLoading={false} error={null} setCount={setCount} />
             </article>
         </div>
