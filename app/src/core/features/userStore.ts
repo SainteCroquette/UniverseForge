@@ -8,8 +8,6 @@ interface UserState {
 }
 
 export const useUserStore = create<UserState>((set) => ({
-    userRole: 'guest',
-    userPermissions: [],
     authorization: new AuthorizationDetails(['guest'], []),
     login: () =>
         set({ authorization: new AuthorizationDetails(['user'], [], [{ name: 'counterPrivilege', permissions: [] }]) }),

@@ -2,12 +2,22 @@
 @use './utils';
 
 @function calculateRem($size) {
-  // remove the unit from the size
-  $size: utils.removeUnit($size);
-  $root-size: utils.removeUnit(constants.$root-font-size);
-  @return calc(($size / #{$root-size}) * 1em);
+    // remove the unit from the size
+    $size: utils.removeUnit($size);
+    $root-size: utils.removeUnit(constants.$root-font-size);
+    @return calc(($size / #{$root-size}) * 1em);
 }
 
 @mixin font-size($size) {
-  font-size: calculateRem($size);
+    font-size: calculateRem($size);
+}
+
+@mixin no-wrap() {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@mixin ellipsis() {
+    @include no-wrap;
+    text-overflow: ellipsis;
 }

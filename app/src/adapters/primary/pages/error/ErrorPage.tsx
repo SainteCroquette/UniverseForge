@@ -1,6 +1,7 @@
-import Page from "@templates/page/Page.tsx";
+import Page from '@templates/page/Page.tsx';
 
 import './ErrorPage.styles.scss';
+import { Typography } from '@atoms/index.ts';
 
 interface ErrorPageProps {
     error: string;
@@ -9,8 +10,8 @@ interface ErrorPageProps {
 const ErrorPage = (props: ErrorPageProps): JSX.Element => {
     return (
         <Page className={'error-page'}>
-            <h1>Error</h1>
-            <p>{props.error}</p>
+            <Typography text={'Error'} />
+            <Typography text={props.error} />
         </Page>
     );
 };

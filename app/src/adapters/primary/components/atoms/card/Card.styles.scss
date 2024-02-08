@@ -1,8 +1,9 @@
-.card {
-  display: flex;
-  flex-direction: column;
+@use '@styles/containers';
 
-  padding: 16px;
-  border-radius: 8px;
+.card {
+  @include containers.flex-center(column);
+  @include containers.rounded();
+  @include containers.padding(2);
+
   background-color: #5d5d5d;
 }

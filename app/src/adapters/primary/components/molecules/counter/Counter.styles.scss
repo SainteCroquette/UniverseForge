@@ -1,8 +1,12 @@
-.counter {
-  color: #ddd;
+@use '@styles/containers';
 
-  .counter-buttons {
-    display: flex;
-    gap: 8px;
-  }
+.counter {
+    color: #ddd;
+
+    .counter-buttons {
+        @include containers.flex-center();
+        @include containers.grid-gap(2);
+
+        margin-top: containers.get-scale(1);
+    }
 }

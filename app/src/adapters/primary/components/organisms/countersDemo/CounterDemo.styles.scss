@@ -1,16 +1,15 @@
+@use '@styles/containers';
+
 .counters-demo {
+    @include containers.flex-center(row);
+    @include containers.grid-gap(4);
+    @include containers.fill-available();
+
+    justify-content: space-evenly;
+
     background-color: #464646;
 
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-     gap: 64px;
-
-  .demo-label {
-    margin-bottom: 16px;
-  }
+    .demo-label {
+        margin-bottom: containers.get-scale(2);
+    }
 }

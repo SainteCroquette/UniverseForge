@@ -1,0 +1,33 @@
+@use './constants';
+
+@function get-scale($n) {
+    @return $n * constants.$grid-gap;
+}
+
+@mixin rounded() {
+    border-radius: constants.$border-radius;
+}
+
+@mixin grid-gap($n: 1) {
+    gap: calc($n * #{constants.$grid-gap});
+}
+
+@mixin padding($n: 1, $m: $n) {
+    padding: calc($n * #{constants.$grid-gap}) calc($m * #{constants.$grid-gap});
+}
+
+@mixin flex($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin flex-center($direction: row) {
+    @include flex($direction);
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin fill-available() {
+    width: 100%;
+    height: 100%;
+}
