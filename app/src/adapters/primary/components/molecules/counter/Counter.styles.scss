@@ -1,7 +1,7 @@
 @use '@styles/containers';
 
 .counter {
-    color: #ddd;
+    color: var(--color-text-tertiary);
 
     .counter-buttons {
         @include containers.flex-center();

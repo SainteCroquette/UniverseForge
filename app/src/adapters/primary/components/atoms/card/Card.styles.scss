@@ -1,9 +1,9 @@
 @use '@styles/containers';
 
 .card {
-  @include containers.flex-center(column);
-  @include containers.rounded();
-  @include containers.padding(2);
+    @include containers.flex-center(column);
+    @include containers.rounded();
+    @include containers.padding(2);
 
-  background-color: #5d5d5d;
+    background-color: var(--color-background-tertiary);
 }

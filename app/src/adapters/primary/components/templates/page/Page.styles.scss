@@ -3,4 +3,7 @@
 .page {
     @include containers.flex-center(column);
     @include containers.fill-available();
+    @include containers.rounded();
+
+    background-color: var(--color-background-secondary);
 }

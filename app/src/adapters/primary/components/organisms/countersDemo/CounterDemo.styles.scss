@@ -7,7 +7,7 @@
 
     justify-content: space-evenly;
 
-    background-color: #464646;
+    background-color: var(--color-background-secondary);
 
     .demo-label {
         margin-bottom: containers.get-scale(2);

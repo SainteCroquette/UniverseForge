@@ -7,13 +7,13 @@
 
     padding: 0;
 
-    background-color: #181818;
+    background-color: var(--color-button-primary);
     transition: background-color 0.3s;
 
     cursor: pointer;
 
     &:hover {
-        background-color: #8d3e05;
+        background-color: var(--color-button-primary-hover);
         transition: background-color 0.3s;
     }
 

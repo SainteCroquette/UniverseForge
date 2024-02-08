@@ -5,6 +5,10 @@
     @include containers.fill-available();
 
     .page-container {
+        @include containers.padding();
+
         flex-grow: 1;
+
+        background-color: var(--color-background-primary);
     }
 }

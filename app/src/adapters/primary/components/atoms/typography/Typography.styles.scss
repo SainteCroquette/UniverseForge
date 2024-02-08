@@ -3,6 +3,6 @@
 .typography {
     @include fonts.font-size(16px);
 
-    color: #ddd;
+    color: var(--color-text-primary);
     text-align: center;
 }
