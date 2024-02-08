@@ -1,8 +1,8 @@
+@use '@styles/fonts';
+@use '@styles/utils';
+
 .typography {
   color: #ddd;
-  padding: 16px;
   text-align: center;
-
-  font-size: 16px;
-
+    @include fonts.font-size(16px);
 }

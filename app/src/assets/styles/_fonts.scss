@@ -1,0 +1,13 @@
+@use './constants';
+@use './utils';
+
+@function calculateRem($size) {
+  // remove the unit from the size
+  $size: utils.removeUnit($size);
+  $root-size: utils.removeUnit(constants.$root-font-size);
+  @return calc(($size / #{$root-size}) * 1em);
+}
+
+@mixin font-size($size) {
+  font-size: calculateRem($size);
+}

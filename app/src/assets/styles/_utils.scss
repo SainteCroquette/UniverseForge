@@ -1,0 +1,15 @@
+@function removeUnit($value) {
+  @if type-of($value) == 'number' and unit($value) == px {
+    @return calc($value / 1px);
+  }
+  @if type-of($value) == 'number' and unit($value) == em {
+    @return calc($value / 1em);
+  }
+  @if type-of($value) == 'number' and unit($value) == rem {
+    @return calc($value / 1rem);
+  }
+  @if type-of($value) == 'number' and unit($value) == '%' {
+    @return calc($value / 1%);
+  }
+  @return $value;
+}
