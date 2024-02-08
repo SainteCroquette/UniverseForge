@@ -1,6 +1,7 @@
 import Button from '@atoms/button/Button.tsx';
 
 import './Counter.styles.scss';
+import Card from "@atoms/card/Card.tsx";
 
 interface CounterProps {
     count: number;
@@ -31,7 +32,7 @@ const Counter = ({count, isLoading, updatePending, error, updateError, updateSuc
     };
 
     return (
-        <div className={'counter'}>
+        <Card className={'counter'}>
             <p>Counter: {count}</p>
 
             <Button className={'counter-button'} onClick={handleIncrement} label={'Increment'} />
@@ -43,7 +44,7 @@ const Counter = ({count, isLoading, updatePending, error, updateError, updateSuc
                 {updateError && 'Error...'}
                 {updateSuccess && 'Saved'}
             </div>
-        </div>
+        </Card>
     );
 };
 
