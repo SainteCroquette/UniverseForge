@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import {getCounter, QUERY_COUNTER_KEY, updateCounter} from '@core/queries/CounterQueries.ts';
+import { getCounter, QUERY_COUNTER_KEY, updateCounter } from '@core/queries/CounterQueries.ts';
 import { useStore } from '@core/features/counterStore.ts';
 
 import Counter from '@molecules/counter/Counter.tsx';
@@ -10,6 +10,7 @@ import './CounterDemo.styles.scss';
 
 const CountersDemo = (): JSX.Element => {
     const queryClient = useQueryClient();
+
     const { count, setCount } = useStore();
 
     const { data, error, isLoading } = useQuery(getCounter);
