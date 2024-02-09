@@ -8,10 +8,7 @@ const counterRoute = attachGuardToRoute(
         path: '/counter',
         lazy: () => import('@pages/counter/CounterPage.lazy.ts'),
         loader: () => {
-            queryClient.prefetchQuery({
-                queryKey: ['counter'],
-                queryFn: getCounter,
-            });
+            queryClient.prefetchQuery(getCounter);
             return null;
         },
     },

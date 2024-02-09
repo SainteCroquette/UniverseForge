@@ -1,10 +1,10 @@
-import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { getCounter, updateCounter } from '@core/queries/CounterQueries.ts';
+import {getCounter, QUERY_COUNTER_KEY, updateCounter} from '@core/queries/CounterQueries.ts';
 import { useStore } from '@core/features/counterStore.ts';
 
 import Counter from '@molecules/counter/Counter.tsx';
-import Typography from "@atoms/typography/Typography.tsx";
+import Typography from '@atoms/typography/Typography.tsx';
 
 import './CounterDemo.styles.scss';
 
@@ -12,17 +12,12 @@ const CountersDemo = (): JSX.Element => {
     const queryClient = useQueryClient();
     const { count, setCount } = useStore();
 
-    const { data, error, isLoading } = useQuery<{count: number}>({
-        queryKey: ['counter'],
-        queryFn: getCounter,
-    });
+    const { data, error, isLoading } = useQuery(getCounter);
 
     const { isPending, isError, isSuccess, mutate } = useMutation({
-        mutationFn: updateCounter,
+        ...updateCounter,
         onSuccess: (mutationData) => {
-            console.log('data', data);
-            console.log('mutationData', mutationData);
-            queryClient.setQueryData(['counter'], mutationData);
+            queryClient.setQueryData(QUERY_COUNTER_KEY, mutationData);
         },
     });
 
