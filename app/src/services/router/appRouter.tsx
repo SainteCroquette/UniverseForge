@@ -6,7 +6,7 @@ import { doLanguageExist, getLanguageFromBrowser, switchLanguage } from '@servic
 import AppLayout from '@templates/appLayout/AppLayout.tsx';
 
 import routes from './routes';
-import { getLanguage } from '@services/translation/i18n.ts';
+import AppNavigation from '@services/navigation/AppNavigation.ts';
 
 const appRouter = createBrowserRouter(
     [
@@ -39,7 +39,7 @@ const appRouter = createBrowserRouter(
                                 ...routes,
                                 {
                                     path: '*',
-                                    element: <Navigate to={`/${getLanguage()}/404`} />,
+                                    element: <Navigate to={AppNavigation.notFound} />,
                                 },
                             ],
                         },
@@ -47,7 +47,7 @@ const appRouter = createBrowserRouter(
                 },
                 {
                     index: true,
-                    element: <Navigate to={`/${getLanguageFromBrowser()}`} />,
+                    element: <Navigate to={AppNavigation.home} />,
                 },
             ],
         },

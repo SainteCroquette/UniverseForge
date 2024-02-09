@@ -4,6 +4,10 @@ export function getLanguageFromBrowser() {
     return navigator.language.split('-')[0];
 }
 
+export function getCurrentLanguage() {
+    return getLanguage();
+}
+
 export function switchLanguage(lang: string) {
     if (getLanguage() !== lang) {
         changeLanguage(lang);
