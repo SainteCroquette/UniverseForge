@@ -13,7 +13,7 @@ interface ButtonProps {
 const Button = ({ label, onClick, disabled, className, type = 'button' }: ButtonProps): JSX.Element => {
     return (
         <button className={`button ${className ?? ''}`} type={type} onClick={onClick} disabled={disabled}>
-            <Typography className={'button-typo'} text={label} />
+            <Typography className={'button-typo'}>{() => label}</Typography>
         </button>
     );
 };

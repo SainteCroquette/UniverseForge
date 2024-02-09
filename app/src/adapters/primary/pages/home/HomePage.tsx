@@ -12,9 +12,11 @@ function HomePage() {
 
     return (
         <Page className={'home-page'} defaultSideMenuMode={'expanded'}>
-            <Typography variant={'title'} size={'large'} text={t('organization.name')} />
+            <Typography variant={'title'} size={'large'}>
+                {() => t('organization.name')}
+            </Typography>
             <NavLink to={AppNavigation.counter}>
-                <Typography text={'Counter'} />
+                <Typography>{() => 'Counter'}</Typography>
             </NavLink>
         </Page>
     );

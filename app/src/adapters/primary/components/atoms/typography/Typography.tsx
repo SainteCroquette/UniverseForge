@@ -1,40 +1,54 @@
 import './Typography.styles.scss';
 
 interface TypographyProps {
-    text: string;
     variant?: 'title' | 'subtitle' | 'body' | 'caption';
     size?: 'small' | 'medium' | 'large';
     className?: string;
+    children: () => string;
 }
 
-const Typography = ({ text, variant, size = 'medium', className }: TypographyProps): JSX.Element => {
+const Typography = ({ variant, children, size = 'medium', className }: TypographyProps): JSX.Element => {
+    let Element: keyof JSX.IntrinsicElements = 'div';
+    let variantClass = '';
+
     if (variant === 'title') {
+        variantClass = 'title';
         switch (size) {
             case 'small':
-                return <h3 className={`typography title small ${className ?? ''}`}>{text}</h3>;
+                Element = 'h3';
+                break;
             case 'medium':
-                return <h2 className={`typography title medium ${className ?? ''}`}>{text}</h2>;
+                Element = 'h2';
+                break;
             case 'large':
-                return <h1 className={`typography title large ${className ?? ''}`}>{text}</h1>;
+                Element = 'h1';
+                break;
         }
     }
 
     if (variant === 'subtitle') {
+        variantClass = 'subtitle';
         switch (size) {
             case 'small':
-                return <h6 className={`typography subtitle small ${className ?? ''}`}>{text}</h6>;
+                Element = 'h6';
+                break;
             case 'medium':
-                return <h5 className={`typography subtitle medium ${className ?? ''}`}>{text}</h5>;
+                Element = 'h5';
+                break;
             case 'large':
-                return <h4 className={`typography subtitle large ${className ?? ''}`}>{text}</h4>;
+                Element = 'h4';
+                break;
         }
     }
 
     if (variant === 'caption') {
-        return <p className={`typography caption ${size} ${className ?? ''}`}>{text}</p>;
+        variantClass = 'caption';
+        Element = 'p';
     }
 
-    return <div className={`typography ${size} ${className ?? ''}`}>{text}</div>;
+    const classes = `typography ${variantClass} ${size} ${className ?? ''}`;
+
+    return <Element className={classes}>{children()}</Element>;
 };
 
 export default Typography;
