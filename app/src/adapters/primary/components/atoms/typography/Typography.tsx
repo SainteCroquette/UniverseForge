@@ -1,13 +1,18 @@
+import useAppTranslation from '@core/hooks/useAppTranslation.ts';
+
+import { TranslationKeys } from '@services/translation/i18n.ts';
+
 import './Typography.styles.scss';
 
 interface TypographyProps {
     variant?: 'title' | 'subtitle' | 'body' | 'caption';
     size?: 'small' | 'medium' | 'large';
     className?: string;
-    children: () => string;
+    children: (k: TranslationKeys) => string;
 }
 
 const Typography = ({ variant, children, size = 'medium', className }: TypographyProps): JSX.Element => {
+    const { t } = useAppTranslation();
     let Element: keyof JSX.IntrinsicElements = 'div';
     let variantClass = '';
 
@@ -48,7 +53,7 @@ const Typography = ({ variant, children, size = 'medium', className }: Typograph
 
     const classes = `typography ${variantClass} ${size} ${className ?? ''}`;
 
-    return <Element className={classes}>{children()}</Element>;
+    return <Element className={classes}>{t(children)}</Element>;
 };
 
 export default Typography;
