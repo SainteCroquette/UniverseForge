@@ -4,6 +4,7 @@ import { default as Home } from './home.tsx';
 import { default as Counter } from './counter.tsx';
 import { default as Profile } from './profile.tsx';
 import { default as Forbidden } from './forbidden.tsx';
+import { default as NotFound } from './notFound.tsx';
 
 
 const routes: RouteObject[] = [
@@ -11,6 +12,7 @@ const routes: RouteObject[] = [
     Counter,
     Profile,
     Forbidden,
+    NotFound,
 ];
 
 export default routes;

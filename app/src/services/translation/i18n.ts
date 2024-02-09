@@ -1,4 +1,4 @@
-import { use } from 'i18next';
+import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import en from './translations/en/en';
@@ -13,7 +13,7 @@ const resources = {
     },
 };
 
-use(initReactI18next)
+i18n.use(initReactI18next)
     .init({
         fallbackLng: 'en',
         resources,
@@ -22,9 +22,13 @@ use(initReactI18next)
     .then();
 
 export const changeLanguage = (lng: string) => {
-    use(initReactI18next).changeLanguage(lng).then();
+    i18n.use(initReactI18next).changeLanguage(lng).then();
 };
 
-export const getLanguage = () => {
-    return use(initReactI18next).language;
+export const getLanguage = (): string => {
+    return i18n.language;
+}
+
+export const getLanguages = (): readonly string[] => {
+    return i18n.languages;
 }
