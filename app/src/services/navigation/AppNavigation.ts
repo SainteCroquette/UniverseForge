@@ -18,7 +18,7 @@ export default class AppNavigation {
     }
 
     static get forbidden() {
-        return AppNavigation._buildPath('/403');
+        return AppNavigation._buildPath('/forbidden');
     }
 
     private static _buildPath(path: string) {
