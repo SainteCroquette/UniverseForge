@@ -1,12 +1,14 @@
 import { isRouteErrorResponse, Navigate, useRouteError } from 'react-router-dom';
 import ErrorPage from '@pages/error/ErrorPage.tsx';
 import ForbiddenError from '@domain/error/ForbiddenError.ts';
+import {useTranslation} from "react-i18next";
 
 const ErrorBoundary = () => {
+    const {i18n} = useTranslation();
     const error = useRouteError();
 
     if (isForbiddenError(error)) {
-        return <Navigate to={'/forbidden'} />;
+        return <Navigate to={`/${i18n.language}/forbidden`} />;
     }
 
     // @ts-expect-error unknown error type

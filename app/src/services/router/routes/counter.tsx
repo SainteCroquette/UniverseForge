@@ -5,7 +5,7 @@ import { attachGuardToRoute } from '@services/router/guards.tsx';
 const counterRoute = attachGuardToRoute(
     { all: { privileges: 'counterPrivilege' } },
     {
-        path: '/counter',
+        path: 'counter',
         lazy: () => import('@pages/counter/CounterPage.lazy.ts'),
         loader: () => {
             queryClient.prefetchQuery(getCounter);

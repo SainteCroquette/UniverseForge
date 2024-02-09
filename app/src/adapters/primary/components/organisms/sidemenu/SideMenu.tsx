@@ -6,10 +6,13 @@ import { useUserStore } from '@core/features/userStore.ts';
 import { Typography, Button } from '@atoms/index.ts';
 
 import './SideMenu.styles.scss';
+import {useTranslation} from "react-i18next";
 
 const SideMenu = (): JSX.Element => {
     const { currentMode, toggle } = useSideMenuStore();
     const { login, logout, authorization } = useUserStore();
+    const {i18n} = useTranslation();
+
 
     return (
         <div className={`side-menu ${currentMode}`}>
@@ -17,13 +20,13 @@ const SideMenu = (): JSX.Element => {
                 <Typography text={`side menu ${authorization.roles}`} />
 
                 <Button onClick={toggle} label={'toggle'} />
-                <NavLink to={'/'}>
+                <NavLink to={`/${i18n.language}`}>
                     <Typography className={'side-menu-item'} text={'Home'} />
                 </NavLink>
-                <NavLink to={'/counter'}>
+                <NavLink to={`/${i18n.language}/counter`}>
                     <Typography className={'side-menu-item'} text={'Counter'} />
                 </NavLink>
-                <NavLink to={'/profile'}>
+                <NavLink to={`/${i18n.language}/profile`}>
                     <Typography className={'side-menu-item'} text={'Profile'} />
                 </NavLink>
                 {authorization.satisfy({ all: { roles: ['guest'] } }) && <Button label={'Login'} onClick={login} />}

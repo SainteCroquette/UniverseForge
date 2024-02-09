@@ -6,7 +6,7 @@ const guard: AuthorizationGuard = { all: { roles: ['user'] } };
 const profileRoute = attachGuardToRoute(guard, {
     children: [
         {
-            path: '/profile',
+            path: 'profile',
             loader: () => true,
             lazy: () => import('@pages/profile/ProfilePage.lazy.ts'),
         },

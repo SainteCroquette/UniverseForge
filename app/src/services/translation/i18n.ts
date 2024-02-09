@@ -20,3 +20,11 @@ use(initReactI18next)
         lng: 'fr',
     })
     .then();
+
+export const changeLanguage = (lng: string) => {
+    use(initReactI18next).changeLanguage(lng).then();
+};
+
+export const getLanguage = () => {
+    return use(initReactI18next).language;
+}
