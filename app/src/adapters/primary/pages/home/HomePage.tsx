@@ -9,7 +9,7 @@ function HomePage() {
 
     return (
         <Page className={'home-page'} defaultSideMenuMode={'expanded'}>
-            <Typography variant={'title'} size={'large'} text={t('toto')} />
+            <Typography variant={'title'} size={'large'} text={t('organization.name')} />
             <NavLink to={'/counter'}>
                 <Typography text={'Counter'} />
             </NavLink>

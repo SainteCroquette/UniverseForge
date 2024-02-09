@@ -1,8 +1,8 @@
 import { use } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from './translations/en/en.json';
-import fr from './translations/fr/fr.json';
+import en from './translations/en/en';
+import fr from './translations/fr/fr';
 
 const resources = {
     en: {
@@ -13,7 +13,10 @@ const resources = {
     },
 };
 
-use(initReactI18next).init({
-    resources,
-    lng: 'fr',
-}).then();
+use(initReactI18next)
+    .init({
+        fallbackLng: 'en',
+        resources,
+        lng: 'fr',
+    })
+    .then();
