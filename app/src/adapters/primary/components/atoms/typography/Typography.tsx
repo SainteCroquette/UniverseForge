@@ -3,6 +3,7 @@ import useAppTranslation from '@core/hooks/useAppTranslation.ts';
 import { TranslationKeys } from '@services/translation/i18n.ts';
 
 import './Typography.styles.scss';
+import { useMemo } from 'react';
 
 interface TypographyProps {
     variant?: 'title' | 'subtitle' | 'body' | 'caption';
@@ -11,13 +12,10 @@ interface TypographyProps {
     children: (k: TranslationKeys) => string;
 }
 
-const Typography = ({ variant, children, size = 'medium', className }: TypographyProps): JSX.Element => {
-    const { t } = useAppTranslation();
+function getHTMLElement(variant: string, size: string): keyof JSX.IntrinsicElements {
     let Element: keyof JSX.IntrinsicElements = 'div';
-    let variantClass = '';
 
     if (variant === 'title') {
-        variantClass = 'title';
         switch (size) {
             case 'small':
                 Element = 'h3';
@@ -32,7 +30,6 @@ const Typography = ({ variant, children, size = 'medium', className }: Typograph
     }
 
     if (variant === 'subtitle') {
-        variantClass = 'subtitle';
         switch (size) {
             case 'small':
                 Element = 'h6';
@@ -47,13 +44,24 @@ const Typography = ({ variant, children, size = 'medium', className }: Typograph
     }
 
     if (variant === 'caption') {
-        variantClass = 'caption';
         Element = 'p';
     }
 
-    const classes = `typography ${variantClass} ${size} ${className ?? ''}`;
+    return Element;
+}
 
-    return <Element className={classes}>{t(children)}</Element>;
+function getClasses(variant: string, size: string, className?: string): string {
+    return `typography ${variant} ${size} ${className ?? ''}`;
+}
+
+const Typography = ({ variant = 'body', children, size = 'medium', className }: TypographyProps): JSX.Element => {
+    const { t } = useAppTranslation();
+
+    const Element = useMemo(() => getHTMLElement(variant, size), [variant, size]);
+    const classes = useMemo(() => getClasses(variant, size, className), [variant, size, className]);
+    const translation = useMemo(() => t(children), [t, children]);
+
+    return <Element className={classes}>{translation}</Element>;
 };
 
 export default Typography;
