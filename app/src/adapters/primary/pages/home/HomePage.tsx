@@ -13,7 +13,7 @@ function HomePage() {
                 {(k) => k.organization.name}
             </Typography>
             <NavLink to={AppNavigation.counter}>
-                <Typography>{() => 'Counter'}</Typography>
+                <Typography>{(k) => k.counter.counter}</Typography>
             </NavLink>
         </Page>
     );

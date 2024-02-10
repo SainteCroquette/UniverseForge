@@ -5,9 +5,9 @@ const ForbiddenPage = (): JSX.Element => {
     return (
         <Page>
             <Typography variant={'title'} size={'large'}>
-                {() => 'Forbidden'}
+                {(k) => k.common.forbidden}
             </Typography>
-            <Typography>{() => 'Sorry, you are not allowed to access this page.'}</Typography>
+            <Typography>{(k) => k.common.noAccess}</Typography>
         </Page>
     );
 };

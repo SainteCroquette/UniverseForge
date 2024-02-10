@@ -11,7 +11,7 @@ interface ErrorPageProps {
 const ErrorPage = (props: ErrorPageProps): JSX.Element => {
     return (
         <Page className={'error-page'}>
-            <Typography>{() => 'Error'}</Typography>
+            <Typography>{(k) => k.common.error}</Typography>
             <Typography>{() => props.error}</Typography>
         </Page>
     );

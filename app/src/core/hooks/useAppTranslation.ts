@@ -17,6 +17,7 @@ function getPropertyAccessString(accessor: (k: TranslationKeys) => string): stri
     if (translationKeyIndex === -1) {
         return '';
     }
+    console.log('valid');
     return functionString.substring(translationKeyIndex + 1);
 }
 

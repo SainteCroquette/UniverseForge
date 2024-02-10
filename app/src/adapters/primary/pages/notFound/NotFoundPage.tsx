@@ -6,7 +6,7 @@ const NotFoundPage = (): JSX.Element => {
     return (
         <Page defaultSideMenuMode={'collapsed'}>
             <Typography variant={'title'} size={'large'}>
-                {() => '404 - Not Found'}
+                {(k) => k.common.notFound}
             </Typography>
         </Page>
     );

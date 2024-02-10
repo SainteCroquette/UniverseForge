@@ -44,15 +44,15 @@ const Counter = ({ count, isLoading, updatePending, error, updateError, updateSu
             <Typography>{() => `Count: ${count}`}</Typography>
 
             <section className={'counter-buttons'}>
-                <Button onClick={handleIncrement} label={'Increment'} />
+                <Button onClick={handleIncrement}>{(k) => k.counter.increment}</Button>
 
-                <Button onClick={handleDecrement} label={'Decrement'} />
+                <Button onClick={handleDecrement}>{(k) => k.counter.decrement}</Button>
             </section>
 
             <div>
-                {updatePending && <Typography>{() => 'Saving...'}</Typography>}
-                {updateError && <Typography>{() => 'Error...'}</Typography>}
-                {updateSuccess && <Typography>{() => 'Saved'}</Typography>}
+                {updatePending && <Typography>{(k) => k.common.saving}</Typography>}
+                {updateError && <Typography>{(k) => k.common.error}</Typography>}
+                {updateSuccess && <Typography>{(k) => k.common.saved}</Typography>}
             </div>
         </Card>
     );

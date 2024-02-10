@@ -16,19 +16,23 @@ const SideMenu = (): JSX.Element => {
     return (
         <div className={`side-menu ${currentMode}`}>
             <div className={'side-menu-content'}>
-                <Typography>{() => `side menu ${authorization.roles}`}</Typography>
-                <Button onClick={toggle} label={'toggle'} />
+                <Typography>{(k) => k.common.sideMenu}</Typography>
+                <Button onClick={toggle}>{(k) => k.common.toggle}</Button>
                 <NavLink to={AppNavigation.home}>
-                    <Typography className={'side-menu-item'}>{() => 'Home'}</Typography>
+                    <Typography className={'side-menu-item'}>{(k) => k.common.home}</Typography>
                 </NavLink>
                 <NavLink to={AppNavigation.counter}>
-                    <Typography className={'side-menu-item'}>{() => 'Counter'}</Typography>
+                    <Typography className={'side-menu-item'}>{(k) => k.counter.counter}</Typography>
                 </NavLink>
                 <NavLink to={AppNavigation.profile}>
-                    <Typography className={'side-menu-item'}>{() => 'Profile'}</Typography>
+                    <Typography className={'side-menu-item'}>{(k) => k.user.profile}</Typography>
                 </NavLink>
-                {authorization.satisfy({ all: { roles: ['guest'] } }) && <Button label={'Login'} onClick={login} />}
-                {!authorization.satisfy({ all: { roles: ['guest'] } }) && <Button label={'Logout'} onClick={logout} />}
+                {authorization.satisfy({ all: { roles: ['guest'] } }) && (
+                    <Button onClick={login}>{(k) => k.user.login}</Button>
+                )}
+                {!authorization.satisfy({ all: { roles: ['guest'] } }) && (
+                    <Button onClick={logout}>{(k) => k.user.logout}</Button>
+                )}
             </div>
         </div>
     );
