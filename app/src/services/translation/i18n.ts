@@ -1,8 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from './translations/en/en';
-import fr from './translations/fr/fr';
+import en from './translations/en/translation.json';
+import fr from './translations/fr/translation.json';
 
 const resources = {
     en: {
@@ -30,8 +30,8 @@ export const changeLanguage = (lng: string) => {
 
 export const getLanguage = (): string => {
     return i18n.language;
-}
+};
 
 export const getLanguages = (): readonly string[] => {
     return i18n.languages;
-}
+};

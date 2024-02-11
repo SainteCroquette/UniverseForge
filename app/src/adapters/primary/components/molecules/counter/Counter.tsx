@@ -41,7 +41,7 @@ const Counter = ({ count, isLoading, updatePending, error, updateError, updateSu
 
     return (
         <Card className={'counter'}>
-            <Typography t={'counter.value'} />
+            <Typography t={'counter.value'} values={{ value: count }} />
 
             <section className={'counter-buttons'}>
                 <Button onClick={handleIncrement} label={'counter.increment'} />

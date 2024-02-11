@@ -1,13 +1,10 @@
-import "i18next";
+import 'i18next';
 
-import en from '../services/translation/translations/en/en';
+import Resources from './i18next-resources.d.ts';
 
 declare module 'i18next' {
     interface CustomTypeOptions {
         defaultNS: 'translation';
-        resources: {
-            translation: typeof en;
-        }
+        resources: Resources;
     }
-
 }
