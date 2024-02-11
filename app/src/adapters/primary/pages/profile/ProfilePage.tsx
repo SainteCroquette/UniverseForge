@@ -4,9 +4,7 @@ import { Typography } from '@atoms/index.ts';
 const ProfilePage = (): JSX.Element => {
     return (
         <Page className={'profile-page'} defaultSideMenuMode={'collapsed'}>
-            <Typography variant={'title'} size={'large'}>
-                {(k) => k.user.profile}
-            </Typography>
+            <Typography variant={'title'} size={'large'} t={'user.profile'}/>
         </Page>
     );
 };

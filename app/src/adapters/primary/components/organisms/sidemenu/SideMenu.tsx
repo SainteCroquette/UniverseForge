@@ -16,22 +16,22 @@ const SideMenu = (): JSX.Element => {
     return (
         <div className={`side-menu ${currentMode}`}>
             <div className={'side-menu-content'}>
-                <Typography>{(k) => k.common.sideMenu}</Typography>
-                <Button onClick={toggle}>{(k) => k.common.toggle}</Button>
+                <Typography t={'common.sideMenu'} />
+                <Button onClick={toggle} label={'common.toggle'} />
                 <NavLink to={AppNavigation.home}>
-                    <Typography className={'side-menu-item'}>{(k) => k.common.home}</Typography>
+                    <Typography className={'side-menu-item'} t={'common.home'} />
                 </NavLink>
                 <NavLink to={AppNavigation.counter}>
-                    <Typography className={'side-menu-item'}>{(k) => k.counter.counter}</Typography>
+                    <Typography className={'side-menu-item'} t={'counter.counter'} />
                 </NavLink>
                 <NavLink to={AppNavigation.profile}>
-                    <Typography className={'side-menu-item'}>{(k) => k.user.profile}</Typography>
+                    <Typography className={'side-menu-item'} t={'user.profile'} />
                 </NavLink>
                 {authorization.satisfy({ all: { roles: ['guest'] } }) && (
-                    <Button onClick={login}>{(k) => k.user.login}</Button>
+                    <Button onClick={login} label={'user.login'} />
                 )}
                 {!authorization.satisfy({ all: { roles: ['guest'] } }) && (
-                    <Button onClick={logout}>{(k) => k.user.logout}</Button>
+                    <Button onClick={logout} label={'user.logout'} />
                 )}
             </div>
         </div>

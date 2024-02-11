@@ -9,11 +9,10 @@ import { Typography } from '@atoms/index.ts';
 function HomePage() {
     return (
         <Page className={'home-page'} defaultSideMenuMode={'expanded'}>
-            <Typography variant={'title'} size={'large'}>
-                {(k) => k.organization.name}
+            <Typography variant={'title'} size={'large'} t={'organization.name'}>
             </Typography>
             <NavLink to={AppNavigation.counter}>
-                <Typography>{(k) => k.counter.counter}</Typography>
+                <Typography t={'counter.counter'}/>
             </NavLink>
         </Page>
     );

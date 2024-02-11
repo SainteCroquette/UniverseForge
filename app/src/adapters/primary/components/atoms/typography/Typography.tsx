@@ -1,15 +1,16 @@
+import { useMemo } from 'react';
+import type { ParseKeys } from 'i18next';
+
 import useAppTranslation from '@core/hooks/useAppTranslation.ts';
 
-import { TranslationKeys } from '@services/translation/i18n.ts';
-
 import './Typography.styles.scss';
-import { useMemo } from 'react';
 
 interface TypographyProps {
     variant?: 'title' | 'subtitle' | 'body' | 'caption';
+    children?: string;
     size?: 'small' | 'medium' | 'large';
     className?: string;
-    children: (k: TranslationKeys) => string;
+    t?: ParseKeys;
 }
 
 function getHTMLElement(variant: string, size: string): keyof JSX.IntrinsicElements {
@@ -54,12 +55,17 @@ function getClasses(variant: string, size: string, className?: string): string {
     return `typography ${variant} ${size} ${className ?? ''}`;
 }
 
-const Typography = ({ variant = 'body', children, size = 'medium', className }: TypographyProps): JSX.Element => {
+const Typography = ({ variant = 'body', t: key, children, size = 'medium', className }: TypographyProps): JSX.Element => {
     const { t } = useAppTranslation();
 
     const Element = useMemo(() => getHTMLElement(variant, size), [variant, size]);
     const classes = useMemo(() => getClasses(variant, size, className), [variant, size, className]);
-    const translation = useMemo(() => t(children), [t, children]);
+    const translation = useMemo(() => {
+        if (key) {
+            return t(key)
+        }
+        return children;
+    }, [t, key, children]);
 
     return <Element className={classes}>{translation}</Element>;
 };

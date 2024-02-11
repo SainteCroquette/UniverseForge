@@ -4,8 +4,6 @@ import { initReactI18next } from 'react-i18next';
 import en from './translations/en/en';
 import fr from './translations/fr/fr';
 
-export type TranslationKeys = typeof en;
-
 const resources = {
     en: {
         translation: en,
@@ -19,6 +17,7 @@ const resources = {
 i18n.use(initReactI18next)
     .init({
         fallbackLng: 'en',
+        defaultNS: 'translation',
         resources,
         lng: 'fr',
     })

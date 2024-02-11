@@ -18,7 +18,7 @@ const Counter = ({ count, isLoading, updatePending, error, updateError, updateSu
     if (isLoading) {
         return (
             <Card>
-                <Typography>{() => 'Loading...'}</Typography>
+                <Typography t={'counter.loading'} />
             </Card>
         );
     }
@@ -26,7 +26,7 @@ const Counter = ({ count, isLoading, updatePending, error, updateError, updateSu
     if (error) {
         return (
             <Card>
-                <Typography>{() => 'Error'}</Typography>
+                <Typography t={'counter.error'} />
             </Card>
         );
     }
@@ -41,18 +41,18 @@ const Counter = ({ count, isLoading, updatePending, error, updateError, updateSu
 
     return (
         <Card className={'counter'}>
-            <Typography>{() => `Count: ${count}`}</Typography>
+            <Typography t={'counter.value'} />
 
             <section className={'counter-buttons'}>
-                <Button onClick={handleIncrement}>{(k) => k.counter.increment}</Button>
+                <Button onClick={handleIncrement} label={'counter.increment'} />
 
-                <Button onClick={handleDecrement}>{(k) => k.counter.decrement}</Button>
+                <Button onClick={handleDecrement} label={'counter.decrement'} />
             </section>
 
             <div>
-                {updatePending && <Typography>{(k) => k.common.saving}</Typography>}
-                {updateError && <Typography>{(k) => k.common.error}</Typography>}
-                {updateSuccess && <Typography>{(k) => k.common.saved}</Typography>}
+                {updatePending && <Typography t={'common.saving'} />}
+                {updateError && <Typography t={'counter.error'} />}
+                {updateSuccess && <Typography t={'common.saved'} />}
             </div>
         </Card>
     );

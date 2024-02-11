@@ -5,8 +5,11 @@ export default {
     counter: {
         increment: 'Increment',
         decrement: 'Decrement',
+        value: 'Counter: {{value}}',
         count: 'Count',
         counter: 'Counter',
+        loading: 'Loading...',
+        error: 'Error',
     },
     counterDemo: {
         title: 'Counter demo',
