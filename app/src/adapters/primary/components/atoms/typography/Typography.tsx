@@ -1,15 +1,14 @@
-import { useMemo } from 'react';
-import type { ParseKeys, TOptions, InterpolationMap } from 'i18next';
+import { type ReactNode, useMemo } from 'react';
+import type { ParseKeys, TFunction } from 'i18next';
+import { Trans } from 'react-i18next';
 
 import useAppTranslation from '@core/hooks/useAppTranslation.ts';
 
 import './Typography.styles.scss';
-import { Trans } from 'react-i18next';
 
 interface TypographyProps {
     t?: ParseKeys;
-    values?: any;
-    children?: string;
+    children?: (t: { t: TFunction; Trans: typeof Trans }) => ReactNode;
     variant?: 'title' | 'subtitle' | 'body' | 'caption';
     size?: 'small' | 'medium' | 'large';
     className?: string;
@@ -60,7 +59,6 @@ function getClasses(variant: string, size: string, className?: string): string {
 const Typography = ({
     variant = 'body',
     t: key,
-    values,
     children,
     size = 'medium',
     className,
@@ -73,19 +71,13 @@ const Typography = ({
         if (key) {
             return t(key);
         }
-        return children;
+        if (children) {
+            return children({ t, Trans: Trans });
+        }
+        return 'MISSING_TRANSLATION_KEY';
     }, [t, key, children]);
 
-    const ttt: typeof t = (key: ParseKeys, options?: TOptions<InterpolationMap>) => {
-        return t(key, options);
-    };
-
-    //    return <Element className={classes}>{translation}</Element>;
-    return (
-        <Trans i18nKey={'counter.value'} values={{ badVal: 54 }}>
-            {t('counter.value', { value: 54 })}
-        </Trans>
-    );
+    return <Element className={classes}>{translation}</Element>;
 };
 
 export default Typography;

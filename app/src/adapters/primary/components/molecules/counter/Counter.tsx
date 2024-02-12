@@ -1,8 +1,8 @@
 import Button from '@atoms/button/Button.tsx';
-
-import './Counter.styles.scss';
 import Card from '@atoms/card/Card.tsx';
 import Typography from '@atoms/typography/Typography.tsx';
+
+import './Counter.styles.scss';
 
 interface CounterProps {
     count: number;
@@ -41,7 +41,11 @@ const Counter = ({ count, isLoading, updatePending, error, updateError, updateSu
 
     return (
         <Card className={'counter'}>
-            <Typography t={'counter.value'} values={{ value: count }} />
+            <Typography>
+                {({ Trans }) => (
+                    <Trans i18nKey={'counter.value'} values={{ value: count }} components={{ balise: <b /> }} />
+                )}
+            </Typography>
 
             <section className={'counter-buttons'}>
                 <Button onClick={handleIncrement} label={'counter.increment'} />
