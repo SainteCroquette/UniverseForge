@@ -7,14 +7,18 @@ import {
     switchLanguage,
 } from '@services/translation/language.ts';
 
+import { useLanguageStore } from '@core/features/languageStore.ts';
+
 export const handlePathAndLanguageSync = ({ params, request }: { params?: Params<string>; request: Request }) => {
+    const { setLanguage } = useLanguageStore.getState();
     if (!params?.lang) {
         return handleDefaultLanguageRedirection();
     }
     if (doLanguageExist(params.lang)) {
         switchLanguage(params.lang);
+        setLanguage(params.lang);
     } else {
-        return handleDefaultLanguageRedirection(request.url.split(`/${params.lang}/`)[1]);
+        return handleDefaultLanguageRedirection(getUrlAfterLang(request.url, params.lang));
     }
     return null;
 };
@@ -27,4 +31,8 @@ const handleDefaultLanguageRedirection = (urlAfterLang?: string) => {
         : `/${getDefaultLanguage()}${urlAfterLang ? `/${urlAfterLang}` : ''}`;
 
     return redirect(redirectUrl);
+};
+
+export const getUrlAfterLang = (url: string, lang: string) => {
+    return url.split(`/${lang}/`)[1];
 };

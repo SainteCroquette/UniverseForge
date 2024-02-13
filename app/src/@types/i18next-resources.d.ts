@@ -28,7 +28,8 @@ interface Resources {
       "forbidden": "Forbidden",
       "noAccess": "Sorry, you are not allowed to access this page.",
       "notFound": "Not found",
-      "sideMenu": "Side menu"
+      "sideMenu": "Side menu",
+      "language": "Language"
     },
     "user": {
       "profile": "Profile",

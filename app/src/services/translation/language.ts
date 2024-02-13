@@ -12,6 +12,10 @@ export function getDefaultLanguage() {
     return getFallbackLanguage();
 }
 
+export function getAvailableLanguages() {
+    return getLanguages();
+}
+
 export function switchLanguage(lang: string) {
     if (getLanguage() !== lang) {
         changeLanguage(lang);
