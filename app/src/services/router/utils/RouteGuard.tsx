@@ -1,10 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { AuthorizationGuard } from '@domain/AuthorizationDetails.ts';
+import { AuthorizationGuard } from '@domain/user/AuthorizationDetails.ts';
 
 import { useUserStore } from '@core/features/userStore.ts';
 
-import AppNavigation from "@services/navigation/AppNavigation.ts";
+import AppNavigation from '@services/navigation/AppNavigation.ts';
 
 interface RouteGuardProps {
     guard: AuthorizationGuard;
@@ -12,7 +12,6 @@ interface RouteGuardProps {
 
 const RouteGuard = ({ guard }: RouteGuardProps): JSX.Element => {
     const { authorization } = useUserStore();
-
 
     if (authorization.satisfy(guard)) {
         return <Outlet />;

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import AuthorizationDetails from '@domain/AuthorizationDetails.ts';
+import AuthorizationDetails from '@domain/user/AuthorizationDetails.ts';
 
 interface UserState {
     authorization: AuthorizationDetails;
