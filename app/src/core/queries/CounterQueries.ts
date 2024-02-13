@@ -1,7 +1,7 @@
 import { UseMutationOptions, UseQueryOptions } from '@tanstack/react-query';
 
 import Gateways from '@core/gateways/Gateways.ts';
-import { createQueryFunctionWrapper, createMutationFunctionWrapper } from '@core/queries';
+import { createQueryFunctionWrapper, createMutationFunctionWrapper } from '@core/queries/utils/wrappers.ts';
 
 import { CounterData } from '@domain/Counter.ts';
 

@@ -1,4 +1,4 @@
-import { attachGuardToRoute, } from '@services/router/guards.tsx';
+import { attachGuardToRoute } from '@services/router/utils/guards.tsx';
 import { AuthorizationGuard } from '@domain/AuthorizationDetails.ts';
 
 const guard: AuthorizationGuard = { all: { roles: ['user'] } };

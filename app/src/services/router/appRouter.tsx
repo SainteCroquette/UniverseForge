@@ -1,11 +1,11 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import AppNavigation from '@services/navigation/AppNavigation.ts';
-import { handlePathAndLanguageSync } from '@services/router/lang.ts';
 
 import AppLayout from '@templates/appLayout/AppLayout.tsx';
 
-import ErrorBoundary from './ErrorBoundary.tsx';
+import ErrorBoundary from './utils/ErrorBoundary.tsx';
+import { handlePathAndLanguageSync } from './utils/lang.ts';
 
 import routes from './routes';
 
