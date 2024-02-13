@@ -1,25 +1,23 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from './translations/en/translation.json';
-import fr from './translations/fr/translation.json';
+import resourcesToBackend from 'i18next-resources-to-backend';
 
-const resources = {
-    en: {
-        translation: en,
-    },
-    fr: {
-        translation: fr,
-    },
-};
+const AVAILABLE_LANGUAGES = ['en', 'es', 'fr'];
 
 // eslint-disable-next-line import/no-named-as-default-member
-i18n.use(initReactI18next)
+i18n.use(
+    resourcesToBackend(async (lang, namespace, callback) => {
+        const { default: trad } = await import(`./locales/${lang}/${namespace}.json`);
+
+        callback(null, trad);
+    }),
+)
+    .use(initReactI18next)
     .init({
         fallbackLng: 'en',
         defaultNS: 'translation',
-        resources,
-        lng: 'fr',
+        lng: 'en',
     })
     .then();
 
@@ -32,6 +30,10 @@ export const getLanguage = (): string => {
     return i18n.language;
 };
 
+export const getFallbackLanguage = (): string => {
+    return i18n.options.fallbackLng as string;
+};
+
 export const getLanguages = (): readonly string[] => {
-    return i18n.languages;
+    return AVAILABLE_LANGUAGES;
 };

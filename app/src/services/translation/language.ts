@@ -1,4 +1,4 @@
-import { changeLanguage, getLanguage, getLanguages } from './i18n.ts';
+import { changeLanguage, getFallbackLanguage, getLanguage, getLanguages } from './i18n.ts';
 
 export function getLanguageFromBrowser() {
     return navigator.language.split('-')[0];
@@ -6,6 +6,10 @@ export function getLanguageFromBrowser() {
 
 export function getCurrentLanguage() {
     return getLanguage();
+}
+
+export function getDefaultLanguage() {
+    return getFallbackLanguage();
 }
 
 export function switchLanguage(lang: string) {
@@ -16,4 +20,8 @@ export function switchLanguage(lang: string) {
 
 export function doLanguageExist(lang: string) {
     return getLanguages().includes(lang);
+}
+
+export function areLanguagesAvailable(): boolean {
+    return getLanguages() && getLanguages().length > 0;
 }
