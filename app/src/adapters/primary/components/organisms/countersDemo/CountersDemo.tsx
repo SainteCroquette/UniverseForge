@@ -24,9 +24,9 @@ const CountersDemo = (): JSX.Element => {
 
     return (
         <div className={'counters-demo'}>
-            <Typography variant={'title'} t={'counterDemo.title'}/>
+            <Typography variant={'title'} t={'counterDemo.title'} />
             <article className={'counter-article'}>
-                <Typography className={'demo-label'} t={'counterDemo.serverState'}/>
+                <Typography className={'demo-label'} t={'counterDemo.serverState'} />
                 <Counter
                     count={data?.count ?? 0}
                     isLoading={isLoading}
@@ -38,7 +38,7 @@ const CountersDemo = (): JSX.Element => {
                 />
             </article>
             <article className={'counter-article'}>
-                <Typography className={'demo-label'} t={'counterDemo.appState'}/>
+                <Typography className={'demo-label'} t={'counterDemo.appState'} />
                 <Counter count={count} isLoading={false} error={null} setCount={setCount} />
             </article>
         </div>
