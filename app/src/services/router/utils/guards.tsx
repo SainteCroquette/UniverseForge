@@ -16,7 +16,7 @@ function doUserSatisfyGuard(guard: AuthorizationGuard): boolean {
 function lazyGuard(guard: AuthorizationGuard, target: LazyRouteFunction<RouteObject>): LazyRouteFunction<RouteObject> {
     return () => {
         if (!doUserSatisfyGuard(guard)) {
-            throw new ForbiddenError();
+            throw new ForbiddenError('Unauthorized access to lazy route.');
         }
         return target();
     };
@@ -25,7 +25,7 @@ function lazyGuard(guard: AuthorizationGuard, target: LazyRouteFunction<RouteObj
 function loaderGuard(guard: AuthorizationGuard, target: LoaderFunction): LoaderFunction {
     return (args) => {
         if (!doUserSatisfyGuard(guard)) {
-            throw new ForbiddenError();
+            throw new ForbiddenError('Unauthorized access to loader route.');
         }
         return target(args);
     };

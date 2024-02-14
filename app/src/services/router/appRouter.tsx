@@ -4,7 +4,7 @@ import AppNavigation from '@services/navigation/AppNavigation.ts';
 
 import AppLayout from '@templates/appLayout/AppLayout.tsx';
 
-import ErrorBoundary from './utils/ErrorBoundary.tsx';
+import RouteErrorBoundary from './utils/RouteErrorBoundary.tsx';
 import { handlePathAndLanguageSync } from './utils/lang.ts';
 
 import routes from './routes';
@@ -13,7 +13,7 @@ const appRouter = createBrowserRouter(
     [
         {
             path: '/',
-            errorElement: <ErrorBoundary />,
+            errorElement: <RouteErrorBoundary />,
             element: <AppLayout />,
             children: [
                 {

@@ -4,6 +4,7 @@ import { getCounter, QUERY_COUNTER_KEY, updateCounter } from '@core/queries/Coun
 import { useStore } from '@core/features/counterStore.ts';
 
 import Counter from '@molecules/counter/Counter.tsx';
+
 import Typography from '@atoms/typography/Typography.tsx';
 
 import './CounterDemo.styles.scss';
