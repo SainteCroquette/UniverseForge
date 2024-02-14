@@ -10,6 +10,13 @@ Quick overview of main focus points:
 - Permissions
 - Testing
 
+todo:
+- proper error handling
+- add hygen templates for code generation
+- add storybook
+- add testing (unit, integration, e2e)
+- add ci/cd, docker, k8s, helm (when backend is at same level as frontend)
+- create comprehensive documentation in .mdx, it supports inline diagrams (usable by docusaurus if needed)
 
 > It might be a good idea to look at the Features section before you start coding, just so you know what's available to you.
 
