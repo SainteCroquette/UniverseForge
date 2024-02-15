@@ -1,6 +1,8 @@
 export default class BaseError extends Error {
-    constructor(message: string) {
+    public readonly recoverPath: string;
+    constructor(message: string, recoverPath?: string) {
         super(message);
         this.message = message;
+        this.recoverPath = recoverPath ?? '';
     }
 }

@@ -11,7 +11,7 @@ import './SideMenu.styles.scss';
 const SideMenu = (): JSX.Element => {
     const { currentMode, toggle } = useSideMenuStore();
     const { login, logout, authorization } = useUserStore();
-    const { goToHome, goToProfile, goToCounter } = useAppNavigation();
+    const { goToHome, goToProfile, goToCounter, goToErrorsDemo } = useAppNavigation();
 
     return (
         <div className={`side-menu ${currentMode}`}>
@@ -21,6 +21,7 @@ const SideMenu = (): JSX.Element => {
                 <Button onClick={goToHome} className={'side-menu-item'} label={'common.home'} />
                 <Button onClick={goToCounter} className={'side-menu-item'} label={'counter.counter'} />
                 <Button onClick={goToProfile} className={'side-menu-item'} label={'user.profile'} />
+                <Button onClick={goToErrorsDemo} className={'side-menu-item'} label={'demo.errors.title'} />
                 {authorization.satisfy({ all: { roles: ['guest'] } }) && (
                     <Button onClick={login} label={'user.login'} />
                 )}

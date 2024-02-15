@@ -3,6 +3,14 @@ interface Resources {
     "organization": {
       "name": "React-Nest boilerplate"
     },
+    "demo": {
+      "errors": {
+        "title": "Errors demo",
+        "navigationLabel": "Errors",
+        "asyncError": "Async error",
+        "eventError": "Event error"
+      }
+    },
     "counter": {
       "increment": "Increment",
       "decrement": "Decrement",

@@ -1,9 +1,10 @@
 import type { RouteObject, LoaderFunction, LazyRouteFunction } from 'react-router-dom';
 
-import type { AuthorizationGuard } from '@domain/user/AuthorizationDetails.ts';
-import ForbiddenError from '@domain/error/ForbiddenError.ts';
+import ForbiddenError from '@services/router/errors/ForbiddenError.ts';
 
 import { useUserStore } from '@core/features/userStore.ts';
+
+import type { AuthorizationGuard } from '@domain/user/AuthorizationDetails.ts';
 
 import RouteGuard from './RouteGuard.tsx';
 

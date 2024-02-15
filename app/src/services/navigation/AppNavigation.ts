@@ -21,6 +21,10 @@ export default class AppNavigation {
         return AppNavigation._buildPath('/forbidden');
     }
 
+    static get errorsDemo() {
+        return AppNavigation._buildPath('/demo/errors');
+    }
+
     private static _buildPath(path: string) {
         return `/${getCurrentLanguage()}${path}`;
     }

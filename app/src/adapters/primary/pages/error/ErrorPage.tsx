@@ -8,9 +8,10 @@ import { useMemo } from 'react';
 interface ErrorPageProps {
     error: string;
     stacktrace?: string;
+    onReset?: () => void;
 }
 
-const ErrorPage = ({ error, stacktrace }: ErrorPageProps): JSX.Element => {
+const ErrorPage = ({ error, stacktrace, onReset }: ErrorPageProps): JSX.Element => {
     const stacktraceLines = useMemo(() => {
         if (!stacktrace) {
             return [];
@@ -26,6 +27,7 @@ const ErrorPage = ({ error, stacktrace }: ErrorPageProps): JSX.Element => {
             {stacktraceLines.map((line, index) => (
                 <Typography key={index}>{() => line}</Typography>
             ))}
+            {onReset && <button onClick={onReset}>Reset</button>}
         </Page>
     );
 };

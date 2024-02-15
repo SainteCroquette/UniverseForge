@@ -17,6 +17,8 @@ const useAppNavigation = () => {
 
     const goToForbidden = useCallback(() => navigate(AppNavigation.forbidden), [navigate]);
 
+    const goToErrorsDemo = useCallback(() => navigate(AppNavigation.errorsDemo), [navigate]);
+
     const goToLangSameRoute = useCallback(
         (lang: string) => {
             const currentLang = getCurrentLanguage();
@@ -35,11 +37,13 @@ const useAppNavigation = () => {
     );
 
     return {
+        navigate,
         goToHome,
         goToCounter,
         goToNotFound,
         goToProfile,
         goToForbidden,
+        goToErrorsDemo,
         goToLangSameRoute,
     };
 };

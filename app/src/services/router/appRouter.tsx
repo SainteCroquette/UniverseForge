@@ -18,6 +18,7 @@ const appRouter = createBrowserRouter(
             children: [
                 {
                     path: '/:lang',
+                    errorElement: <RouteErrorBoundary />,
                     loader: handlePathAndLanguageSync,
                     children: [
                         ...routes,

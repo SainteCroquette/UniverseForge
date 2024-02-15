@@ -5,14 +5,8 @@ import { default as Counter } from './counter.tsx';
 import { default as Profile } from './profile.tsx';
 import { default as Forbidden } from './forbidden.tsx';
 import { default as NotFound } from './notFound.tsx';
+import { default as Demo } from './demo';
 
-
-const routes: RouteObject[] = [
-    Home,
-    Counter,
-    Profile,
-    Forbidden,
-    NotFound,
-];
+const routes: RouteObject[] = [Home, Demo, Counter, Profile, Forbidden, NotFound];
 
 export default routes;

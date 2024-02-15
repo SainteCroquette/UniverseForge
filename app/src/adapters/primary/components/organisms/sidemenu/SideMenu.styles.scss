@@ -5,6 +5,7 @@
 .side-menu {
     height: 100%;
     width: constants.$side-menu-width;
+    padding-left: containers.get-scale(1);
 
     background-color: var(--color-background-primary);
 
@@ -26,6 +27,7 @@
 
     .side-menu-content {
         @include containers.flex(column);
+        @include containers.grid-gap(1);
         width: constants.$side-menu-width;
 
         .side-menu-item {
